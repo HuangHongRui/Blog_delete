@@ -1,0 +1,104 @@
+![最近有点懒...得改改..](http://upload-images.jianshu.io/upload_images/4007920-fdbe86dcbac0a5ef.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+> ##### text-align: center的作用，作用哪些元素，让哪些元素水平居中。
+
+- text-align作为HTML元素属性其主要是用来文本水平居中的，该属性能让块级元素内的inline元素和inline-block元素水平居中。
+
+> ##### IE 盒模型和W3C盒模型的区别。
+
+
+![盒子的尺寸包含了 内容区，padding， border 和 margin 这四个部分](http://upload-images.jianshu.io/upload_images/4007920-b76d1b0ac697fa06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+
+![盒子的尺寸只包含内容区，padding，border 和 margin 被排除在盒子尺寸之外](http://upload-images.jianshu.io/upload_images/4007920-98b9e1c808b3897d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+<pre>面板式界面设计：
+页面上包含几个面板，比如一个登录面板，一个最新新闻面板，一个投票面板，这类设计典型的做法是，用背景图的方式，首先逐个设计出这些面板的外观图，将需要用具体内容替换的地方空着，这些面板，无非就是一些使用面板外观图片做背景图的盒子，然后，在这些盒子里面，放上具体的内容，使用 padding 控制内容的摆放位置，使用 margin 调整面板本身的摆放位置，由于面板的尺寸是固定的，我们依此确立了盒子的尺寸之后，就无需再关心尺寸问题，然后，不论你怎样调整 padding 和 margin，都不会影响面板本身的结构。这是 IE6 盒子模型。
+而在 W3C 的盒子模型中，调整 padding 和 margin ，都会影响盒子的尺寸，你在调整内容摆放位置的同时，极有可能打乱面板本身的结构。</pre>
+<pre>
+百分比级尺寸 + 像素级边界问题：
+W3C 盒子模型在设计中最让人头疼的是，假如你有一个不确定宽度的容器，想在里面放置两个同样大小的盒子，最合理的的做法当时是设置每个盒子的宽度为 50%，这样，不管你的容器宽度为多大，这两个盒子总能自动适应这个宽度，然而，前提是你不要设置任何 padding 或 border，而，现实中，为了防止两个盒子中的内容互相挨得太近，你肯定要设置 padding，一旦设置了 padding，就会发现你的容器被撑破了。
+当然你会说，每个盒子的宽度不要设为 50%，可以设为 45%，然后为每个盒子再加一个 5% 的 padding，这是一个解决办法，但我们在设计中经常有这样的习惯，虽然一段内容的宽度可能不确定，但我们总喜欢它拥有固定 padding，我们并不希望 padding 自动适应，况且，在很多时候，我们希望为一个自适应宽度的盒子，设置一个 1 像素的 border，在这种情形，W3C 盒子模型将陷入困境。
+而遇到这种情形，IE6 盒子模型不需要任何周折，你只管将每个盒子的宽度设置为 50%，它们会自动适应容器的宽度，然后，不管你你怎样设置 padding 和 border，都不会撑破你的容器。
+</pre>
+
+- 在 [CSS3](http://lib.csdn.net/base/css3) 中，我们看到了下面这2个属性：
+`box-sizing`:有两个可选值，一个是默认的 content-box 一个是 border-box，选用后者，盒子模型将按 IE6 的方式进行处理。
+
+---
+
+> ##### *{ box-sizing: border-box;}的作用
+
+
+ - 设置所有 CSS 的盒模型遵从 IE 盒模型的标准，此时在 CSS 设置的属性中，width 将包括内容宽度 + 内边距宽度 + 边框宽度，不再遵循默认 W3C 盒模型的标准。
+【好处：无论如何改动 border 与 padding 的值，都不会导致 box 总尺寸发生变化，也就不会打乱页面整体布局。】
+
+
+---
+
+> ##### line-height: 2和line-height: 200%的区别。
+
+
+- line-height: 2 ：设置行高为本身文字高度的两倍（推荐）。
+- line-height: 200% ：设置行高为父元素文字高度的两倍。
+
+
+
+
+---
+> ##### inline-block的特性？去除缝隙方法？高度不一样的inline-block元素如何顶端对齐?
+
+- dispiay: inline-block; 拥有inline的特性，不占据一整行，宽度由内容宽度决定，又可设置宽高，内外边距来呈现block的特性。
+
+- 达到顶端对齐，可以给inline-block元素添加：`vertical-align:top`
+
+![用图说话...去缝隙（缝隙是什么呢，是‘空白符’。）..](http://upload-images.jianshu.io/upload_images/4007920-ad91a5fafa79bc56.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+
+
+
+
+---
+
+
+> ##### CSS sprite 是什么?
+
+
+正名：CSS 精灵图
+外号：Css 雪碧 🍺
+
+- 为了减少网络请求（积少成多，可省钱...啧啧），提高网页加载性能，可以将不同的图片/图标合并在一张图片上，再配合 Css 的 background-position : x y; 来获取图片..
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+> ##### 让一个元素"看不见"有几种方式？有什么区别?
+
+
+<pre>
+<pre>`display: none;`
+<!-- 脱离文档流 不占据位置 --></pre><pre>`opacity: 0;`
+<!-- 透明但仍然在文档流中 --></pre><pre>`visibility: hidden;`
+<!-- 基本与opacity一致 -->
+</pre><pre>`text-indent;`
+<!-- 缩进，也可让某段文字彻底移走，表面上看不到，但是元素依旧在原地. -->
+</pre><pre>`z-index: `
+<!-- 设置为无限大的值如9999;或-9999让其覆盖或者被其他元素覆盖.(同级)
+用一个<span>设置为inline-block，设置宽、高并让它移动到某个位置然后设置-背景色为白色，实现一个遮罩的方式。 --></pre></pre>
+
+
+
+---
