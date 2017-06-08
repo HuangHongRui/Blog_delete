@@ -74,4 +74,67 @@ postCSS
 
 先确保标准范围内达到目的，对于低端的浏览器再去覆盖，覆盖越多越好，覆盖不了就算，不可能因为地段浏览器导致最好的技术和框架给丢掉。
 
+- 行动
+
+合适的框架。。。
+
+Bootstrap（>=ie8）
+
+jQuery 1.~（>= ie6）, jq 2.~(>=ie9)
+
+vue(>=ie9)
+
+开发之前必要考虑这些兼容性问题。。不然到时会从头来的
+
+
+
+
+条件注释：
+可被用来向IE提供及隐藏代码
+
+
+条件注释在IE9还可以工作。在IE10中开始无法正常工作
+
+- [! !IE] 非IE执行
+
+
+
+
+
+css hack？
+
+3种表示形式
+- CSS属性前缀法
+- 选择器前缀法
+- IE条件注释法
+
+
+css属性：
+	记住bug使用（ie6 的_ ， IE6/7的 *  ,ie6——8 的\9）
+	'_color:red'
+	'*color:red'
+	'color:yellow\9'
+
+<!--[if IE 7]>
+<link rel="stylesheet" href="ie7.css" type="text/css"/>
+<![endif]-->
+这段是在IE10下生效的，会进行一个判断。。IE10以上识别不了
+
+
+常见属性的兼容情况：
+
+inline-block>= ie8
+min-width/min-height : >=ie8
+:before,：after : >=ie8
+div:hover: >=ie8
+background-size: >=ie9
+圆角 >= ie9
+阴影 >=ie9
+动画/渐变 >=ie10
+
+
+
+
+
+
 
