@@ -123,7 +123,7 @@ css属性：
 
 常见属性的兼容情况：
 
-inline-block>= ie8
+inline-block >= ie8
 min-width/min-height : >=ie8
 :before,：after : >=ie8
 div:hover: >=ie8
@@ -133,8 +133,31 @@ background-size: >=ie9
 动画/渐变 >=ie10
 
 
+- 常见兼容处理例子
+
+<pre>`clearfix:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+.clearfix {
+	*zoom: 1; /*只对ie6、7有效*/
+｝
+`</pre>
 
 
+<pre>
+`.target {
+	display: inline-block;
+	*display:inline;
+	*zoom:1;
+}`
+</pre>
 
+
+用这种方法会使代码乱七八糟。。
+
+
+所以，更多会使用像<!--[if IE 7] -->这种...
 
 
