@@ -14,4 +14,15 @@ display: table-cell 实现居中 。作用于表格和行内元素。
 
 
 
+:before | :after 目的为了省标签.
+
+:after 用途之一..
+```
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+```
+
 
