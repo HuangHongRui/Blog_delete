@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        html {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            font-size: 24px;
+            padding: 0;
+            margin: 0;
+            background-color: rgba(150, 100, 50, 0.5)
+        }
+        .box {
+            padding-top: 100px;
+        }
+
+        .sub {
+            line-height: 2em;
+            letter-spacing: 0.2em;
+        }
+
+        .container {
+            position: fixed;
+            height: 100%;
+            width:100%; 
+            background-color:rgba(0,0,0,0.8);
+            display: none;
+        }
+        
+        .ct{
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            max-width: 400px ;
+            border-radius: 200px;
+            border: 2px solid rgba(0,0,0,1);
+            box-shadow: 0 0px 10px 10px rgba(0,0,0,0.1);
+            z-index: 2;
+            padding:0 10px; 
+        }
+
+        .ct>.x {
+            display: inline-block;
+            position: absolute;
+            right:80px;
+            top: 10px;  
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .ct>header {
+            border-bottom:2px solid #000;
+            line-height: 2em;
+            letter-spacing: 0.25em;
+            padding: 5px;
+        }
+
+        .ct>content {
+            line-height: 2em;
+            letter-spacing: 0.1em;
+            padding: 5px;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ct text-center">
+            <span class = "x text-danger">x</span>
+            <header class="text-success">Info</header>
+            <content class="text-info">Man needs his difficulties because they are necessary to enjoy success. </content>
+        </div>  
+    </div>        
+
+    <div class=" box text-center">
+    <button class="btn-lg btn-info">点我点我..</button>
+    <h4 class="sub text-danger">点我点我...........</h4>
+    </div>
+
+
+    <script>
+        var container = document.querySelector('.container'),
+            ct = document.querySelector('.ct')
+            btn = document.querySelector(".btn-lg"),
+            x = document.querySelector('.ct .x')
+        btn.addEventListener("click",function() {
+            container.classList.add('show')
+        })
+        x.addEventListener('click',function() {
+            container.classList.remove('show')
+        })
+        container.addEventListener('click',function() {
+            container.classList.remove('show')
+        })
+        ct.addEventListener('click',function(e) {
+            e.stopPropagation()
+        })
+    </script>
+</body>
+</html>
