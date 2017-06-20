@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+
+      .box {
+        border: 2ox solid #999;
+        background-color: #999;
+        max-width: 600px; 
+        max-height: 200px;
+        margin: 100px auto;
+        border-radius: 20px;
+        font-size: 24px;
+        overflow: hidden;
+        padding: 10px 0;
+        border: 2px  solid #fff;
+        box-shadow: 0 10px 80px 30px rgba(0,0,0,0.08),0 5px 40px 15px rgba(0,0,0,0.1);
+      }
+
+      ul, li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .tab {
+        text-align: center;
+      }
+
+      .tab>li {
+        display: inline-block;
+        padding: 5px 5px;
+        border: 1.5px solid #FF8;
+        border-bottom: #999 solid 2px;
+        border-radius: 5px 5px 0 0;
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      .content {
+        border-top: 1px solid #ff8;
+        text-align: center; 
+        padding: 10px;
+      }
+
+      .content li{
+        font-size: 1.5em;
+        letter-spacing: 0.5em;
+        line-height: 1.5em;
+        padding: 10px;
+      }
+
+      .box:after {
+        content: "";
+        display: block;
+        clear:both;
+      }
+      
+      .have{
+        z-index: 100;
+        background-color: #FF8;   
+      }
+
+      .content li{
+        display: none;
+      }
+
+      .content>.showYou {
+        display: block;
+      }
+
+    </style>
+</head>
+<body>
+
+  <div class="box">
+    <ul class="tab">  
+      <li>Tab-One</li>
+      <li class="have">Tab-Two</li>
+      <li>Tab-Thr</li>
+    </ul>
+    <ul class="content">
+      <li >内容一</li>
+      <li class="showYou">内容二</li>
+      <li>内容三</li>
+    </ul>
+  </div>
+
+  <script>
+
+    var tab = document.querySelector('.tab')
+    var tabl = document.querySelectorAll('.tab>li')
+    var ctn = document.querySelectorAll('.content>li')
+    var tabCt = document.querySelector('.box')
+     
+    tab.addEventListener('click', function(e){
+      var clickedNode = e.target
+
+      if (clickedNode.tagName.toLowerCase() === "li") {
+        for (var i = 0; i < tabl.length; i++) {  
+          tabl[i].classList.remove('have')
+        }
+        clickedNode.classList.add('have')
+      }
+
+      var index = [].indexOf.call(tabl, clickedNode)
+      if (clickedNode.tagName.toLowerCase() === 'li'){
+      for (var i = 0; i < ctn.length; i++) {
+        ctn[i].classList.remove('showYou')
+      }
+        ctn[index].classList.add('showYou')
+      }
+     })
+     
+  </script>
+
+
+</body>
+</html>
